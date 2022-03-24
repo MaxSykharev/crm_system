@@ -8,12 +8,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+"""
+urls to all ViewSet 
+"""
 router = routers.SimpleRouter()
 router.register('api/EmployeeList', EmployeeViewSet)
 router.register('api/CompaniesList', CompaniesViewSet)
 router.register('api/PositionsList', PositionsViewSet)
-"""
-urls to all ViewSet 
-"""
 
 urlpatterns += router.urls
