@@ -3,8 +3,8 @@ from rest_framework import viewsets, mixins
 from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from .models import Employee, Company
-from .serializer import EmployeeSerializer, CompanySerializer
+from .models import Employee, Company, Position
+from .serializer import EmployeeSerializer, CompanySerializer, PositionSerializer
 
 
 class EmployeeViewSet(mixins.CreateModelMixin,
@@ -29,5 +29,15 @@ class CompaniesViewSet(mixins.CreateModelMixin,
     queryset = Company.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filter_fields = ['friends']
+    filter_fields = ['partners']
     search_fields = ['name', 'id']
+
+
+class PositionsViewSet(mixins.CreateModelMixin,
+                       mixins.ListModelMixin,
+                       mixins.RetrieveModelMixin,
+                       mixins.UpdateModelMixin,
+                       viewsets.GenericViewSet):
+    serializer_class = PositionSerializer
+    queryset = Position.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
