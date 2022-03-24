@@ -18,4 +18,5 @@ class EmployeeAdmin(admin.ModelAdmin):
 
 @admin.register(Position)
 class PositionAdmin(admin.ModelAdmin):
-    list_display = ['name', 'description']
+    pass
+
