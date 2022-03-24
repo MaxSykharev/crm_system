@@ -16,7 +16,7 @@ class EmployeeViewSet(mixins.CreateModelMixin,
     queryset = Employee.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filter_fields = ['second_name', 'company']
+    filter_fields = ['start_work', 'company']
     search_fields = ['second_name', 'first_name']
 
 
