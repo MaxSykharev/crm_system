@@ -2,8 +2,11 @@ from django.contrib import admin
 
 from .models import Company, Employee, Position
 
+"""
+register  models
+"""
 
-# register  models
+
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ['name', 'country', 'get_partners', 'email', 'count_employees', 'get_employees', 'created_at',

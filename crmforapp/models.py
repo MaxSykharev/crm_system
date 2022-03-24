@@ -1,6 +1,8 @@
 from django.db import models
 from django_countries.fields import CountryField
 
+from crmforapp.models.choises import LEVEL
+
 
 class Position(models.Model):
     """
@@ -52,11 +54,7 @@ class Employee(models.Model):
     languages = models.TextField(max_length=100)
     company = models.ManyToManyField(Company, related_name="employees")
     profession = models.ManyToManyField(Position, related_name="employees")
-    LEVEL = [
-        (1, 'Junior'),
-        (2, 'Middle'),
-        (3, 'Senior'),
-    ]
+
     knowledge = models.PositiveSmallIntegerField('knowledge', choices=LEVEL)
     phone_number = models.CharField(max_length=13, unique=True)
     email = models.EmailField(max_length=100, unique=True)
