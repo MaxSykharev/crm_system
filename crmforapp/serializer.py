@@ -18,4 +18,4 @@ class CompanySerializer(serializers.ModelSerializer):
 class PositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Position
-        fields = "__all__"
+        fields = ('__all__')
