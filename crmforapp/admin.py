@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
 from .models import Company, Employee, Position
 
 
+# register  models
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ['name', 'country', 'get_friends', 'email', 'count_employees', 'get_employees', 'created_at',
+    list_display = ['name', 'country', 'get_partners', 'email', 'count_employees', 'get_employees', 'created_at',
                     'last_changes']
 
 
@@ -19,4 +19,3 @@ class EmployeeAdmin(admin.ModelAdmin):
 @admin.register(Position)
 class PositionAdmin(admin.ModelAdmin):
     pass
-
