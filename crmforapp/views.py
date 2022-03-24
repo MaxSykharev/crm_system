@@ -10,7 +10,6 @@ from .serializer import EmployeeSerializer, CompanySerializer, PositionSerialize
 class EmployeeViewSet(mixins.CreateModelMixin,
                       mixins.ListModelMixin,
                       mixins.RetrieveModelMixin,
-                      mixins.UpdateModelMixin,
                       viewsets.GenericViewSet):
     serializer_class = EmployeeSerializer
     queryset = Employee.objects.all()
@@ -23,7 +22,6 @@ class EmployeeViewSet(mixins.CreateModelMixin,
 class CompaniesViewSet(mixins.CreateModelMixin,
                        mixins.ListModelMixin,
                        mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin,
                        viewsets.GenericViewSet):
     serializer_class = CompanySerializer
     queryset = Company.objects.all()
@@ -36,7 +34,6 @@ class CompaniesViewSet(mixins.CreateModelMixin,
 class PositionsViewSet(mixins.CreateModelMixin,
                        mixins.ListModelMixin,
                        mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin,
                        viewsets.GenericViewSet):
     serializer_class = PositionSerializer
     queryset = Position.objects.all()
