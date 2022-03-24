@@ -10,20 +10,18 @@ from .serializer import EmployeeSerializer, CompanySerializer, PositionSerialize
 class EmployeeViewSet(mixins.CreateModelMixin,
                       mixins.ListModelMixin,
                       mixins.RetrieveModelMixin,
-                      mixins.UpdateModelMixin,
                       viewsets.GenericViewSet):
     serializer_class = EmployeeSerializer
     queryset = Employee.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filter_fields = ['second_name', 'company']
+    filter_fields = ['start_work', 'company']
     search_fields = ['second_name', 'first_name']
 
 
 class CompaniesViewSet(mixins.CreateModelMixin,
                        mixins.ListModelMixin,
                        mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin,
                        viewsets.GenericViewSet):
     serializer_class = CompanySerializer
     queryset = Company.objects.all()
@@ -36,7 +34,6 @@ class CompaniesViewSet(mixins.CreateModelMixin,
 class PositionsViewSet(mixins.CreateModelMixin,
                        mixins.ListModelMixin,
                        mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin,
                        viewsets.GenericViewSet):
     serializer_class = PositionSerializer
     queryset = Position.objects.all()
