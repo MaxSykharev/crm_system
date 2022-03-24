@@ -1,10 +1,9 @@
-
 from django.db import models
 from django_countries.fields import CountryField
 
 
 class Position(models.Model):
-    name = models.CharField(max_length=50, blank=False, unique=True)
+    name = models.CharField(max_length=30, blank=False, unique=True)
     description = models.TextField(blank=False)
 
     def __str__(self):
