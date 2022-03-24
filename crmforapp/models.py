@@ -1,7 +1,7 @@
 from django.db import models
 from django_countries.fields import CountryField
 
-from .choises import LEVEL
+from .choices import LEVEL
 
 
 class Position(models.Model):
@@ -16,7 +16,6 @@ class Position(models.Model):
 
 
 class Company(models.Model):
-
     created_at = models.DateTimeField(auto_now_add=True)
     last_changes = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=100, unique=True)
@@ -52,7 +51,6 @@ class Employee(models.Model):
     languages = models.TextField(max_length=100)
     company = models.ManyToManyField(Company, related_name="employees")
     profession = models.ManyToManyField(Position, related_name="employees")
-
     knowledge = models.PositiveSmallIntegerField('knowledge', choices=LEVEL)
     phone_number = models.CharField(max_length=13, unique=True)
     email = models.EmailField(max_length=100, unique=True)
