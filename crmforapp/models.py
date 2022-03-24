@@ -1,7 +1,7 @@
 from django.db import models
 from django_countries.fields import CountryField
 
-from crmforapp.models.choises import LEVEL
+from .choises import LEVEL
 
 
 class Position(models.Model):
@@ -16,9 +16,7 @@ class Position(models.Model):
 
 
 class Company(models.Model):
-    """
-    represents a company
-    """
+
     created_at = models.DateTimeField(auto_now_add=True)
     last_changes = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=100, unique=True)
