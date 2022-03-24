@@ -3,6 +3,9 @@ from django_countries.fields import CountryField
 
 
 class Position(models.Model):
+    """
+    represents a position in the company
+    """
     name = models.CharField(max_length=30, blank=False, unique=True)
     description = models.TextField(blank=False)
 
@@ -11,16 +14,19 @@ class Position(models.Model):
 
 
 class Company(models.Model):
+    """
+    represents a company
+    """
     created_at = models.DateTimeField(auto_now_add=True)
     last_changes = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=100, unique=True)
     country = CountryField(null=True)
     email = models.EmailField(max_length=100, unique=True)
-    friends = models.ManyToManyField('self', blank=True, symmetrical=False)
+    partners = models.ManyToManyField('self', blank=True, symmetrical=False)
 
     @property
-    def get_friends(self):
-        return list(self.friends.all())
+    def get_partners(self):
+        return list(self.partners.all())
 
     @property
     def get_employees(self):
@@ -35,6 +41,9 @@ class Company(models.Model):
 
 
 class Employee(models.Model):
+    """
+    represents a Employee
+    """
     start_work = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length=30)
     second_name = models.CharField(max_length=30)
