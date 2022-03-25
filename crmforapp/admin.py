@@ -10,13 +10,15 @@ register  models
 # register  models
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ['name', 'country', 'get_partners', 'email', 'count_employees', 'get_employees', 'created_at',
+    filter_horizontal = ('partners',)
+    list_display = ['name', 'country', 'email', 'count_employees', 'get_employees', 'created_at',
                     'last_changes']
 
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'second_name', 'age', 'get_company', 'get_profession', 'knowledge', 'phone_number',
+    filter_horizontal = ('company', 'profession',)
+    list_display = ['first_name', 'second_name', 'age', 'knowledge', 'phone_number',
                     'email', 'start_work', ]
 
 
