@@ -27,6 +27,11 @@ class Company(models.Model):
     partners = models.ManyToManyField('self', blank=True, symmetrical=False)
 
     @property
+    def get_partners(self):
+        return list(self.partners.all())
+
+
+    @property
     def get_employees(self):
         return list(self.employees.all())
 
@@ -51,8 +56,16 @@ class Employee(models.Model):
     company = models.ManyToManyField(Company, related_name="employees")
     profession = models.ManyToManyField(Position, related_name="employees")
     knowledge = models.PositiveSmallIntegerField('knowledge', choices=LEVEL)
-    phone_number = models.CharField(max_length=13, unique=True)
+    phone_number = models.CharField(max_length=20, unique=True)
     email = models.EmailField(max_length=100, unique=True)
+
+    @property
+    def get_company(self):
+        return list(self.company.all())
+
+    @property
+    def get_profession(self):
+        return list(self.profession.all())
 
     def __str__(self):
         return self.first_name
