@@ -16,7 +16,8 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'second_name', 'age', 'get_company', 'get_profession', 'knowledge', 'phone_number',
+    list_display = ['user', 'first_name', 'second_name', 'age', 'get_company', 'get_profession', 'knowledge',
+                    'phone_number',
                     'email', 'start_work', ]
 
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
 from .choices import LEVEL
@@ -30,7 +31,6 @@ class Company(models.Model):
     def get_partners(self):
         return list(self.partners.all())
 
-
     @property
     def get_employees(self):
         return list(self.employees.all())
@@ -47,6 +47,7 @@ class Employee(models.Model):
     """
     represents a Employee
     """
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name="status", null=True)
     start_work = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length=30)
     second_name = models.CharField(max_length=30)
